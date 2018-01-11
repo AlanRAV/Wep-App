@@ -15,7 +15,7 @@
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: bold;
 	color: #663300;
-	width: 75px;
+	width: 8vw;
 }
 
 .buttonStyle:hover {
@@ -34,7 +34,12 @@ body {
 	
     background-color: linen;
      text-align: left;
+     
+    font-size: 2vw;
+
 }
 h2 {
 	 text-align: center;
     color: #71a7b8;
+    
+}
