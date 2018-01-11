@@ -10,6 +10,22 @@
 </style>
 </head>
 
+
+
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDLxr54S26OCqPzyl6rZcOSgRWDiqAbGbU",
+    authDomain: "webapp-8ff8d.firebaseapp.com",
+    databaseURL: "https://webapp-8ff8d.firebaseio.com",
+    projectId: "webapp-8ff8d",
+    storageBucket: "",
+    messagingSenderId: "322729223975"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="index.js"></script>
 <body>
 	
 	
@@ -21,40 +37,59 @@
 	
 <div id="mainContent">
 <p id="helloText">?</p>
-<button id="clickButton" class="buttonStyle">Hide</button>
-<button id="retrieveName" class="buttonStyle">Retrieve name</button>
-<d></d>
+<button id="idButton" class="buttonStyle">Retrieve id</button>
+<button id="hideButton" class="buttonStyle">Hide</button>
+<button id="nameButton" class="buttonStyle">Retrieve name</button>
+
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    $("#clickButton").click(function(){
+    $("#hideButton").click(function(){
         $("h2").hide(1000);
-    });
-    $("#retrieveName").click(function(){
-        $("d").show(1000);
     });
 });
 </script>
 <script>
-    var ref = new Firebase("https://webapp-8ff8d.firebaseio.com/");
-    var d = snapshot.val(); 
-    console.log(d);
-  </script>
+	
+	var idButton = document.getElementById("idButton");
+	var nameButton = document.getElementById("nameButton");
 
-<!-- 
-<script> 
-var myButton = document.getElementById("clickButton");
-var myText = document.getElementById("helloText");
+	var myText = document.getElementById("helloText");
 
-myButton.addEventListener('click', doSomething, false)
+	idButton.addEventListener('click', retrieveId, false)
+	nameButton.addEventListener('click', retrieveName, false)
 
-function doSomething() {
-	myText.textContent = "Alan Alvarez";
-}
+	function doSomething() {
+	myText.textContent = "hello, world!";
+	}
+
+	function retrieveId (){
+    
+        var ref = firebase.database().ref().child("UsersId").child("Alan");
+        ref.on('value', function (datasnapshot){
+            
+            myText.textContent= datasnapshot.val();
+        });
+
+	}
+	
+	function retrieveName (){
+    
+        var ref = firebase.database().ref().child("UsersId").child("Alan");
+        ref.on('value', function (datasnapshot){
+            
+            myText.textContent= datasnapshot.key;
+        });
+
+	}
+	
+
 </script>
--->
+
+
+
 
 <h2>Web related tools that you like </h2>
 <br> I like to use some frameworks like foundation and bootstrap for making the pages look good and all the front related things, and for authentication and database I like to use firebase.  
@@ -70,16 +105,3 @@ function doSomething() {
 
 </body>
 </html>
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDLxr54S26OCqPzyl6rZcOSgRWDiqAbGbU",
-    authDomain: "webapp-8ff8d.firebaseapp.com",
-    databaseURL: "https://webapp-8ff8d.firebaseio.com",
-    projectId: "webapp-8ff8d",
-    storageBucket: "",
-    messagingSenderId: "322729223975"
-  };
-  firebase.initializeApp(config);
-</script>
